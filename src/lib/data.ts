@@ -201,10 +201,11 @@ export const inventory: IInventoryItem[] = [
 export interface KpiCardProps {
   title: string
   metric: string
-  icon: keyof import('lucide-react').icons
-  color: 'magenta' | 'cyan' | 'default'
+  icon: string
+  color: 'blue' | 'green' | 'orange' | 'default'
   description: string
   compliance?: number
+  alert?: boolean
 }
 
 export const kpiData: KpiCardProps[] = [
@@ -212,29 +213,30 @@ export const kpiData: KpiCardProps[] = [
         title: "OS Hoy",
         metric: "12",
         icon: "ClipboardList",
-        color: "cyan",
+        color: "blue",
         description: "Órdenes de servicio para hoy.",
-    },
-    {
-        title: "Equipos Críticos",
-        metric: "2",
-        icon: "ShieldAlert",
-        color: "magenta",
-        description: "Equipos que requieren atención.",
     },
     {
         title: "Técnicos Activos",
         metric: "3",
         icon: "Users",
-        color: "cyan",
+        color: "green",
         description: "Técnicos actualmente en servicio.",
+    },
+    {
+        title: "Equipos Críticos",
+        metric: "2",
+        icon: "ShieldAlert",
+        color: "orange",
+        description: "Equipos que requieren atención inmediata.",
+        alert: true,
     },
     {
         title: "% Cumplimiento SLA",
         metric: "85%",
         icon: "CheckCircle2",
-        color: "cyan",
-        description: "+5% vs la semana pasada",
+        color: "blue",
+        description: "+5% vs semana pasada",
         compliance: 85,
     }
 ];

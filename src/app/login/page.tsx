@@ -69,76 +69,168 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2 animate-in fade-in-0 duration-500">
-      <div className="relative hidden bg-[#1E3A8A] lg:flex flex-col items-center justify-center p-10 text-white">
-        <div className="relative z-20 flex flex-col items-center text-center">
-            <ServiGoLogo className="mb-8 h-28 w-28 text-white" />
-             <div className="flex items-baseline font-bold text-5xl mb-4">
-                <span className="text-white">ServiGo</span>
-                <span className="text-primary">One</span>
-            </div>
-            <p className="text-xl mt-4 text-white/80 max-w-sm">Gestión Inteligente de Activos y Servicios de Campo</p>
+    <div
+      className="w-full min-h-screen animate-in fade-in-0 duration-500"
+      style={{ display: 'grid', gridTemplateColumns: '60% 40%' }}
+    >
+      {/* ── Lado Izquierdo: Marca (60%) ─────────────────────────────── */}
+      <div
+        className="hidden lg:flex flex-col items-center justify-center p-16 text-white relative overflow-hidden"
+        style={{
+          background: 'radial-gradient(ellipse at center, #1E3A8A 0%, #1E40AF 100%)',
+        }}
+      >
+        {/* Decorative blurred orb */}
+        <div
+          className="absolute rounded-full opacity-20 blur-3xl"
+          style={{
+            width: '480px',
+            height: '480px',
+            background: 'radial-gradient(circle, #3B82F6, transparent 70%)',
+            top: '-80px',
+            right: '-80px',
+          }}
+        />
+        <div className="relative z-10 flex flex-col items-center text-center max-w-md">
+          <ServiGoLogo className="mb-8 h-32 w-32 text-white drop-shadow-xl" />
+          <div className="flex items-baseline font-extrabold mb-6" style={{ fontSize: '52px', letterSpacing: '-1px' }}>
+            <span className="text-white">ServiGo</span>
+            <span style={{ color: '#93C5FD' }}>One</span>
+          </div>
+          <p
+            className="text-white/80 leading-relaxed max-w-xs"
+            style={{ fontSize: '24px', fontWeight: 400 }}
+          >
+            Gestión Inteligente de Activos y Servicios de Campo
+          </p>
+          {/* Subtle divider */}
+          <div className="mt-10 w-16 border-t border-white/20" />
+          <p className="mt-6 text-white/50 text-sm tracking-wide uppercase">
+            Plataforma Empresarial ServiGo
+          </p>
         </div>
       </div>
-      <div className="flex items-center justify-center min-h-screen py-24 bg-background relative">
+
+      {/* ── Lado Derecho: Formulario (40%) ──────────────────────────── */}
+      <div
+        className="flex items-center justify-center min-h-screen relative overflow-hidden"
+        style={{
+          background: 'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(147,197,253,0.12) 0%, #F8FAFC 65%)',
+        }}
+      >
+        {/* Loading overlay */}
         {isLoggingIn && (
-             <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-20">
-                <div className="text-center">
-                     <div className="relative mx-auto flex items-center justify-center h-24 w-24">
-                        <ServiGoLogo className="absolute h-full w-full text-primary/20" />
-                        <Loader className="h-12 w-12 text-primary animate-spin" />
-                    </div>
-                    <p className="mt-4 font-semibold text-muted-foreground">Validando acceso...</p>
-                </div>
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-20">
+            <div className="text-center">
+              <div className="relative mx-auto flex items-center justify-center h-24 w-24">
+                <ServiGoLogo className="absolute h-full w-full text-primary/20" />
+                <Loader className="h-12 w-12 text-primary animate-spin" />
+              </div>
+              <p className="mt-4 font-semibold text-slate-500">Validando acceso...</p>
             </div>
-        )}
-        <div className="mx-auto grid w-[380px] gap-8 px-4">
-          <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold text-foreground">Acceder a tu Cuenta</h1>
-            <p className="text-balance text-muted-foreground">
-              Ingresa tus credenciales para entrar a la plataforma.
-            </p>
           </div>
-          <form onSubmit={handleLogin} className="grid gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Correo Electrónico</Label>
-              <div className="relative">
-                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@ejemplo.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 text-base rounded-lg pl-10"
-                  disabled={isLoggingIn}
-                />
+        )}
+
+        {/* Form card */}
+        <div
+          className="w-full mx-8"
+          style={{ maxWidth: '400px' }}
+        >
+          {/* Card container */}
+          <div
+            className="bg-white px-10 py-12"
+            style={{
+              borderRadius: '1.75rem',
+              boxShadow: '0 20px 40px -10px rgba(30,58,138,0.10), 0 4px 16px -4px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(226,232,240,0.8)',
+            }}
+          >
+            {/* Header */}
+            <div className="mb-8 text-center">
+              <div className="flex lg:hidden justify-center mb-4">
+                <ServiGoLogo className="h-16 w-16 text-primary" />
               </div>
+              <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+                Acceder a tu Cuenta
+              </h1>
+              <p className="mt-2 text-sm text-slate-500">
+                Ingresa tus credenciales para entrar a la plataforma.
+              </p>
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Contraseña</Label>
-              <div className="relative">
-                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={cn(
-                      "h-12 text-base rounded-lg pl-10",
-                      error && "ring-2 ring-offset-2 ring-accent/70 animate-shake border-accent"
-                  )}
-                  disabled={isLoggingIn}
-                />
+
+            {/* Form */}
+            <form onSubmit={handleLogin} className="flex flex-col gap-5">
+              {/* Email field */}
+              <div className="flex flex-col gap-1.5">
+                <Label htmlFor="email" className="text-sm font-semibold text-slate-700">
+                  Correo Electrónico
+                </Label>
+                <div className="relative">
+                  <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@ejemplo.com"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isLoggingIn}
+                    className="pl-10 h-12 text-sm bg-slate-50 border-slate-200 rounded-xl transition-all duration-200
+                      focus-visible:bg-white focus-visible:border-blue-300 focus-visible:ring-2 focus-visible:ring-[#93C5FD]/60 focus-visible:ring-offset-0"
+                  />
+                </div>
               </div>
-            </div>
-             {error && <p className="text-sm font-medium text-destructive -mt-3">{error}</p>}
-            <Button type="submit" className="w-full btn-gradient text-white font-semibold h-12 text-base rounded-md" disabled={isLoggingIn}>
+
+              {/* Password field */}
+              <div className="flex flex-col gap-1.5">
+                <Label htmlFor="password" className="text-sm font-semibold text-slate-700">
+                  Contraseña
+                </Label>
+                <div className="relative">
+                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={isLoggingIn}
+                    className={cn(
+                      "pl-10 h-12 text-sm bg-slate-50 border-slate-200 rounded-xl transition-all duration-200 focus-visible:bg-white focus-visible:border-blue-300 focus-visible:ring-2 focus-visible:ring-[#93C5FD]/60 focus-visible:ring-offset-0",
+                      error && "ring-2 ring-offset-0 ring-red-300 border-red-300 animate-shake bg-red-50"
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Error message */}
+              {error && (
+                <p className="text-xs font-medium text-red-500 -mt-2 pl-1">
+                  {error}
+                </p>
+              )}
+
+              {/* Submit button */}
+              <button
+                type="submit"
+                disabled={isLoggingIn}
+                className="mt-1 w-full h-12 rounded-xl text-sm font-semibold text-white tracking-wide
+                  transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg
+                  disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
+                style={{
+                  background: 'radial-gradient(ellipse at center, #2563EB 0%, #1E40AF 100%)',
+                  boxShadow: '0 4px 14px rgba(37,99,235,0.35)',
+                }}
+              >
                 {isLoggingIn ? 'Accediendo...' : 'Entrar'}
-            </Button>
-          </form>
+              </button>
+            </form>
+          </div>
+
+          {/* Footer note */}
+          <p className="mt-6 text-center text-xs text-slate-400">
+            © 2025 ServiGo One · Plataforma Empresarial
+          </p>
         </div>
       </div>
     </div>

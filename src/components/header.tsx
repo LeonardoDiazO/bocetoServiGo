@@ -21,9 +21,9 @@ export function Header() {
   const { user, logout } = useAuth()
 
   return (
-    <header className="flex h-16 items-center gap-4 border-b bg-card px-4 lg:px-6">
+    <header className="flex h-14 md:h-16 items-center gap-2 md:gap-4 border-b bg-card px-3 md:px-6">
       <div className="flex items-center gap-4">
-        <SidebarTrigger className="md:hidden" />
+        <SidebarTrigger className="flex-shrink-0" />
         <Link href="/" className="flex items-center gap-2">
           <svg
             viewBox="0 0 100 100"
@@ -43,7 +43,7 @@ export function Header() {
               <circle cx="50" cy="45" r="5" fill="white" />
             </g>
           </svg>
-          <div className="flex items-baseline font-bold text-xl">
+          <div className="hidden xs:flex items-baseline font-bold text-xl">
             <span className="text-foreground">ServiGo</span>
             <span className="text-primary">One</span>
           </div>

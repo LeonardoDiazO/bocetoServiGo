@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* #F8FAFC */
+    --background: 210 40% 98%; /* #F8FAFC — gris azulado suave, contraste elegante para cards blancas */
     --foreground: 222 47% 11%; /* #0F172A */
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -28,7 +28,7 @@
     --border: 220 13% 91%; /* #E2E8F0 */
     --input: 220 13% 88%;
     --ring: 224 82% 57%;
-    --radius: 0.75rem; /* 12px */
+    --radius: 1.5rem; /* 24px */
 
     /* Chart Colors from new design system */
     --chart-1: 28 95% 53%;   /* Orange */
@@ -97,6 +97,9 @@
   }
   body {
     @apply bg-background text-foreground tracking-tight;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight text-foreground;
@@ -126,18 +129,18 @@
 @layer components {
   .sg-card {
     @apply bg-card border;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-    transition: all 0.2s ease-in-out;
+    border-radius: 1.5rem; /* 24px — explícito para máxima compatibilidad */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
 
   .sg-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 24px 32px -6px rgba(0, 0, 0, 0.09), 0 10px 14px -6px rgba(0, 0, 0, 0.04);
+    transform: translateY(-3px);
   }
 
   .dark .sg-card {
-    box-shadow: none;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
   }
   
   .card-sg {
