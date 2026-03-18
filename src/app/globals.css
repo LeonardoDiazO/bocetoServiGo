@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 220 14% 96%; /* #F1F5F9 */
+    --background: 210 40% 98%; /* #F8FAFC */
     --foreground: 222 47% 11%; /* #0F172A */
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -12,7 +12,7 @@
     --popover-foreground: 222 47% 11%;
     --primary: 224 82% 57%; /* #2563EB */
     --primary-foreground: 0 0% 98%;
-    --primary-dark: 225 73% 39%; /* #1E3A8A */
+    --primary-dark: 225 73% 39%; /* #1D4ED8 */
     --secondary: 210 17% 98%; /* #F8F9FA */
     --secondary-foreground: 222 47% 11%;
     --muted: 220 13% 85%;
@@ -96,10 +96,10 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground tracking-tight;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-bold tracking-tight;
   }
 }
 
@@ -127,13 +127,12 @@
   .sg-card {
     @apply bg-card border;
     border-radius: var(--radius);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.1);
     transition: all 0.2s ease-in-out;
   }
 
   .sg-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -4px rgba(0,0,0,0.12);
   }
 
   .dark .sg-card {
@@ -165,12 +164,12 @@
     font-weight: 700;
   }
   .btn-gradient {
-    background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-dark)));
+    background-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary-dark)));
     transition: all 0.2s ease-in-out;
   }
   .btn-gradient:hover {
-    opacity: 0.9;
+    opacity: 0.95;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
   }
 }
