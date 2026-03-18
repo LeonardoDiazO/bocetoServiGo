@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { equipment, clients, type IEquipment } from "@/lib/data"
 import { Building, Search, Tag } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface EnrichedEquipment extends IEquipment {
   clientName: string;
@@ -34,15 +35,11 @@ export function EquipmentListComponent() {
     )
   }, [searchTerm])
 
-  const getStatusBadgeVariant = (status: "ok" | "critico") => {
-    return status === "critico" ? "destructive" : "secondary"
-  }
-  
   const getStatusBorderClass = (status: "ok" | "critico") => {
     if (status === 'critico') {
         return "border-l-[5px] border-l-primary-magenta";
     }
-    return "border-l-[5px] border-l-transparent";
+    return "border-l-[5px] border-l-primary-cyan";
   }
 
   return (
@@ -67,7 +64,12 @@ export function EquipmentListComponent() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                     <CardTitle className="text-base font-bold pr-2">{eq.name}</CardTitle>
-                    <Badge variant={getStatusBadgeVariant(eq.status)} className="capitalize shrink-0">
+                    <Badge 
+                      className={cn("capitalize shrink-0 text-primary-foreground border-transparent", {
+                        'bg-primary-magenta': eq.status === 'critico',
+                        'bg-primary-cyan': eq.status === 'ok'
+                      })}
+                    >
                       {eq.status}
                     </Badge>
                 </div>

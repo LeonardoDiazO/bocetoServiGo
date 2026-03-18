@@ -43,13 +43,13 @@ export function KpiCard({
 
   return (
     <Card className="card-sg">
-      <CardHeader className="p-4 pb-0">
+      <CardHeader className="p-6 pb-2">
         <div className="flex justify-between items-start">
             <CardTitle className="card-title-text">{title}</CardTitle>
             {LucideIcon && <LucideIcon className={cn("h-4 w-4", colorClasses[color])} />}
         </div>
       </CardHeader>
-      <CardContent className="p-4 flex flex-col justify-end min-h-[90px]">
+      <CardContent className="p-6 pt-0 flex flex-col justify-end min-h-[90px]">
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="kpi-metric">{metric}</p>
