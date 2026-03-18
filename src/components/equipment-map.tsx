@@ -70,11 +70,11 @@ export function EquipmentMap({ criticalEquipment }: EquipmentMapProps) {
                 className="relative h-[400px] w-full rounded-md overflow-hidden bg-muted"
             >
                 <Image 
-                    src="https://picsum.photos/seed/mapview/1200/400"
-                    alt="Map of critical equipment"
+                    src="https://images.unsplash.com/photo-1594924284493-541e21952328?q=80&w=1200&h=400&fit=crop"
+                    alt="Mapa de la ciudad con puntos de geolocalización"
                     fill
-                    className="object-cover"
-                    data-ai-hint="world map"
+                    className="object-cover brightness-90"
+                    data-ai-hint="city map"
                 />
                 {criticalEquipment.map((eq, index) => {
                     const position = markerPositions[index % markerPositions.length];
