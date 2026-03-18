@@ -44,9 +44,9 @@ export function EquipmentListComponent() {
 
   const getStatusBorderClass = (status: "ok" | "critico") => {
     if (status === "critico") {
-      return "border-l-4 border-l-primary-magenta"
+      return "border-l-4 border-accent"
     }
-    return "border-l-4 border-l-primary-cyan"
+    return "border-l-4 border-success"
   }
 
   return (
@@ -69,9 +69,10 @@ export function EquipmentListComponent() {
           {filteredEquipment.map((eq) => (
             <Card
               key={eq.id}
-              className={`card-sg transition-all flex flex-col ${getStatusBorderClass(
-                eq.status
-              )}`}
+              className={cn(
+                "card-sg transition-all flex flex-col",
+                getStatusBorderClass(eq.status)
+              )}
             >
               <CardHeader>
                 <div className="flex justify-between items-start">
@@ -80,10 +81,11 @@ export function EquipmentListComponent() {
                   </CardTitle>
                   <Badge
                     className={cn(
-                      "capitalize shrink-0 text-primary-foreground border-transparent",
+                      "capitalize shrink-0 border-transparent",
                       {
-                        "bg-accent": eq.status === "critico", // Mapped to Orange
-                        "bg-primary": eq.status === "ok", // Mapped to Blue
+                        "bg-accent text-accent-foreground":
+                          eq.status === "critico",
+                        "bg-success text-success-foreground": eq.status === "ok",
                       }
                     )}
                   >
