@@ -36,8 +36,8 @@
     --primary-magenta: 336 82% 52%;
     --primary-cyan: 187 100% 33%;
     --bg-main: 220 17% 94%;
-    --card-shadow-light: rgba(255, 255, 255, 0.7);
-    --card-shadow-dark: rgba(228, 230, 232, 0.6);
+    --card-shadow-light: #ffffff;
+    --card-shadow-dark: #d1d9e6;
 
     /* Sidebar colors */
     --sidebar-background: 210 29% 25%; /* #2C3E50 */
@@ -69,8 +69,8 @@
     --input: 210 29% 20%;
     --ring: 187 80% 46%;
 
-    --card-shadow-light: rgba(45, 55, 65, 0.3);
-    --card-shadow-dark: rgba(0, 0, 0, 0.3);
+    --card-shadow-light: hsl(210 29% 20%);
+    --card-shadow-dark: hsl(210 29% 5%);
 
     /* Sidebar colors */
     --sidebar-background: 210 29% 10%;
@@ -98,21 +98,21 @@
   .card-sg {
     @apply bg-card border-0;
     border-radius: var(--radius);
-    box-shadow: 8px 8px 16px var(--card-shadow-dark), -8px -8px 16px var(--card-shadow-light);
+    box-shadow: -6px -6px 12px var(--card-shadow-light), 6px 6px 12px var(--card-shadow-dark);
     transition: all 0.2s ease-in-out;
   }
 
   .card-sg:hover {
     transform: translateY(-2px);
-    box-shadow: 10px 10px 20px var(--card-shadow-dark), -10px -10px 20px var(--card-shadow-light);
+    box-shadow: -8px -8px 16px var(--card-shadow-light), 8px 8px 16px var(--card-shadow-dark);
   }
 
   .neumorphic-button {
-    @apply rounded-md bg-background shadow-[5px_5px_10px_var(--card-shadow-dark),-5px_-5px_10px_var(--card-shadow-light)];
+    @apply rounded-md bg-background shadow-[-5px_-5px_10px_var(--card-shadow-light),5px_5px_10px_var(--card-shadow-dark)];
   }
 
   .neumorphic-button:active {
-    @apply shadow-[inset_5px_5px_10px_var(--card-shadow-dark),inset_-5px_-5px_10px_var(--card-shadow-light)];
+    @apply shadow-[inset_-5px_-5px_10px_var(--card-shadow-light),inset_5px_5px_10px_var(--card-shadow-dark)];
   }
 
   .kpi-metric {
