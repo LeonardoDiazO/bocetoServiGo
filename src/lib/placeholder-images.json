@@ -5,12 +5,6 @@
       "description": "User avatar",
       "imageUrl": "https://picsum.photos/seed/user-avatar/40/40",
       "imageHint": "person face"
-    },
-    {
-      "id": "servigo-logo",
-      "description": "ServiGo One Logo",
-      "imageUrl": "https://picsum.photos/seed/servigo-logo/160/40",
-      "imageHint": "company logo"
     }
   ]
 }
