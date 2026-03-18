@@ -38,7 +38,12 @@ yarn-error.log*
 next-env.d.ts
 
 .genkit/*
-.env*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# .env.example is intentionally NOT ignored — it's safe (no real keys)
 
 # firebase
 firebase-debug.log
