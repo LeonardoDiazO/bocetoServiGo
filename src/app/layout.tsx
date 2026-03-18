@@ -1,6 +1,9 @@
 import type {Metadata} from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'ServiGo One - HR Analytics',
@@ -16,7 +19,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
       </head>
-      <body className="font-body antialiased">
+      <body className={`${inter.className} antialiased`}>
         {children}
         <Toaster />
       </body>
