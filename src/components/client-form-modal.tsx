@@ -78,6 +78,7 @@ export function ClientFormModal({ client, isOpen, onClose, onSave }: ClientFormM
     toast({
       title: "Cliente Guardado",
       description: `El cliente ${clientToSave.name} ha sido guardado exitosamente.`,
+      variant: "success",
     })
     onClose()
   }

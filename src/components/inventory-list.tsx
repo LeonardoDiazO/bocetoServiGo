@@ -17,6 +17,7 @@ import {
   PlusCircle,
   MinusCircle,
   Warehouse,
+  Boxes,
 } from "lucide-react"
 import { inventory as initialInventory, type IInventoryItem } from "@/lib/data"
 import { cn } from "@/lib/utils"
@@ -38,6 +39,11 @@ export function InventoryListComponent() {
       return nameMatch || serialMatch
     })
   }, [inventory, searchTerm])
+  
+  const handleCreateNew = () => {
+    // Placeholder for opening a "create new item" modal
+    alert("Funcionalidad para crear nuevo repuesto no implementada.")
+  }
 
   const isStockCritical = (item: IInventoryItem) => {
     return item.stock <= item.criticalStockLevel
@@ -64,11 +70,24 @@ export function InventoryListComponent() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          {/* Add filter buttons here if needed */}
         </div>
       </Card>
 
-      {filteredInventory.length > 0 ? (
+      {inventory.length === 0 ? (
+        <Card className="card-sg">
+            <CardContent className="flex flex-col items-center justify-center gap-4 p-12 text-center">
+                <Boxes className="h-16 w-16 text-muted-foreground/30" />
+                <h3 className="text-2xl font-semibold tracking-tight">Tu inventario está vacío</h3>
+                <p className="text-muted-foreground max-w-md">
+                    Registra tus repuestos y equipos para empezar a gestionar tu stock.
+                </p>
+                <Button onClick={handleCreateNew} size="lg" className="mt-4">
+                    <PlusCircle className="mr-2" />
+                    Agregar mi primer repuesto
+                </Button>
+            </CardContent>
+        </Card>
+      ) : filteredInventory.length > 0 ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredInventory.map((item) => (
             <Card

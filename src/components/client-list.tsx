@@ -24,6 +24,7 @@ import {
   PlusCircle,
   Search,
   Trash2,
+  Users,
 } from "lucide-react"
 import { clients as initialClients, type IClient } from "@/lib/data"
 import { ClientFormModal } from "./client-form-modal"
@@ -123,53 +124,67 @@ export function ClientListComponent() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nombre</TableHead>
-                  <TableHead className="hidden md:table-cell">NIT/Documento</TableHead>
-                  <TableHead className="hidden lg:table-cell">Email</TableHead>
-                  <TableHead className="hidden sm:table-cell">Teléfono</TableHead>
-                  <TableHead className="text-right">Acciones</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredClients.length > 0 ? (
-                  filteredClients.map((client) => (
-                    <TableRow key={client.id}>
-                      <TableCell className="font-medium">{client.name}</TableCell>
-                      <TableCell className="hidden md:table-cell">{client.nit}</TableCell>
-                      <TableCell className="hidden lg:table-cell">{client.email}</TableCell>
-                      <TableCell className="hidden sm:table-cell">{client.phone}</TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
-                          <Button variant="outline" size="icon" className="h-8 w-8">
-                            <Building className="h-4 w-4" />
-                            <span className="sr-only">Ver Sedes</span>
-                          </Button>
-                          <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleEdit(client)}>
-                            <Pencil className="h-4 w-4" />
-                            <span className="sr-only">Editar</span>
-                          </Button>
-                           <Button variant="destructive" size="icon" className="h-8 w-8" onClick={() => openDeleteDialog(client)}>
-                            <Trash2 className="h-4 w-4" />
-                            <span className="sr-only">Eliminar</span>
-                          </Button>
-                        </div>
+          {clients.length > 0 ? (
+            <div className="rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Nombre</TableHead>
+                    <TableHead className="hidden md:table-cell">NIT/Documento</TableHead>
+                    <TableHead className="hidden lg:table-cell">Email</TableHead>
+                    <TableHead className="hidden sm:table-cell">Teléfono</TableHead>
+                    <TableHead className="text-right">Acciones</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredClients.length > 0 ? (
+                    filteredClients.map((client) => (
+                      <TableRow key={client.id}>
+                        <TableCell className="font-medium">{client.name}</TableCell>
+                        <TableCell className="hidden md:table-cell">{client.nit}</TableCell>
+                        <TableCell className="hidden lg:table-cell">{client.email}</TableCell>
+                        <TableCell className="hidden sm:table-cell">{client.phone}</TableCell>
+                        <TableCell className="text-right">
+                          <div className="flex justify-end gap-2">
+                            <Button variant="outline" size="icon" className="h-8 w-8">
+                              <Building className="h-4 w-4" />
+                              <span className="sr-only">Ver Sedes</span>
+                            </Button>
+                            <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleEdit(client)}>
+                              <Pencil className="h-4 w-4" />
+                              <span className="sr-only">Editar</span>
+                            </Button>
+                             <Button variant="destructive" size="icon" className="h-8 w-8" onClick={() => openDeleteDialog(client)}>
+                              <Trash2 className="h-4 w-4" />
+                              <span className="sr-only">Eliminar</span>
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={5} className="h-24 text-center">
+                        No se encontraron clientes con ese criterio.
                       </TableCell>
                     </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell colSpan={5} className="h-24 text-center">
-                      No se encontraron clientes.
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-4 p-12 text-center">
+              <Users className="h-16 w-16 text-muted-foreground/30" />
+              <h3 className="text-2xl font-semibold tracking-tight">Aún no tienes clientes</h3>
+              <p className="text-muted-foreground max-w-md">
+                Empieza a centralizar la información para una gestión más eficiente.
+              </p>
+              <Button onClick={handleCreateNew} size="lg" className="mt-4">
+                <PlusCircle className="mr-2" />
+                Agregar mi primer cliente
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
 
