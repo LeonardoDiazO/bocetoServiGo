@@ -3,7 +3,8 @@
 import { useRef, useEffect, useCallback, RefObject } from "react"
 
 export function useSignatureCanvas(
-  canvasRef: RefObject<HTMLCanvasElement>
+  canvasRef: RefObject<HTMLCanvasElement>,
+  options?: { color?: string }
 ) {
   const isDrawingRef = useRef(false)
   const contextRef = useRef<CanvasRenderingContext2D | null>(null)
@@ -23,10 +24,10 @@ export function useSignatureCanvas(
     
     context.scale(dpr, dpr)
     context.lineCap = "round"
-    context.strokeStyle = "black"
+    context.strokeStyle = options?.color || "black"
     context.lineWidth = 2
     contextRef.current = context
-  }, [canvasRef])
+  }, [canvasRef, options?.color])
 
   useEffect(() => {
     prepareCanvas()

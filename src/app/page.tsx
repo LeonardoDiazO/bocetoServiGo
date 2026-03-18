@@ -11,7 +11,7 @@ import { Header } from "@/components/header"
 import { kpiData } from "@/lib/data"
 import { KpiCard } from "@/components/kpi-card"
 import { Card, CardContent } from "@/components/ui/card"
-import { OrderServiceForm } from "@/components/order-service-form"
+import { ServiceOrderComponent } from "@/components/service-order-component"
 import { EquipmentListComponent } from "@/components/equipment-list"
 
 export type Module = 'Dashboard' | 'Clientes' | 'Equipos' | 'Ordenes' | 'Inventario';
@@ -57,7 +57,7 @@ export default function Home() {
               <PlaceholderContent module="Clientes" />
             )}
             {currentModule === "Equipos" && <EquipmentListComponent />}
-            {currentModule === "Ordenes" && <OrderServiceForm />}
+            {currentModule === "Ordenes" && <ServiceOrderComponent />}
             {currentModule === "Inventario" && (
               <PlaceholderContent module="Inventario" />
             )}
