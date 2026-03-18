@@ -19,6 +19,7 @@ import { EquipmentListComponent } from "@/components/equipment-list"
 import { ClientListComponent } from "@/components/client-list"
 import { InventoryListComponent } from "@/components/inventory-list"
 import { EquipmentMap } from "@/components/equipment-map"
+import { RecentSales } from "@/components/recent-sales"
 
 export type Module =
   | "Dashboard"
@@ -51,13 +52,14 @@ const DashboardContent = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {updatedKpiData.map((kpi) => (
           <KpiCard key={kpi.title} {...kpi} />
         ))}
       </div>
-       <div>
+      <div className="grid gap-6 lg:grid-cols-2">
         <EquipmentMap criticalEquipment={criticalEquipment} />
+        <RecentSales />
       </div>
     </div>
   )

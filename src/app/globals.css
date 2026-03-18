@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* #F8FAFC */
+    --background: 220 14% 96%; /* #F1F5F9 */
     --foreground: 222 47% 11%; /* #0F172A */
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -127,13 +127,13 @@
   .sg-card {
     @apply bg-card border;
     border-radius: var(--radius);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in-out;
   }
 
   .sg-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
 
   .dark .sg-card {
@@ -145,7 +145,7 @@
   }
 
   .kpi-metric {
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 700;
     color: hsl(var(--foreground));
   }

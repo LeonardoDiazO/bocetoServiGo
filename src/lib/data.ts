@@ -88,6 +88,7 @@ export interface IServiceOrder {
     status: ServiceOrderStatus;
     technicianId: string;
     technicianName: string;
+    value?: number;
 }
 
 export const serviceOrders: IServiceOrder[] = [
@@ -100,7 +101,8 @@ export const serviceOrders: IServiceOrder[] = [
         equipmentHealth: "Crítico",
         status: "Pendiente",
         technicianId: "tech-1",
-        technicianName: "Carlos Mappale"
+        technicianName: "Carlos Mappale",
+        value: 350,
     },
     {
         id: "os-2",
@@ -111,7 +113,8 @@ export const serviceOrders: IServiceOrder[] = [
         equipmentHealth: "OK",
         status: "Pendiente",
         technicianId: "tech-1",
-        technicianName: "Carlos Mappale"
+        technicianName: "Carlos Mappale",
+        value: 120,
     },
     {
         id: "os-3",
@@ -120,9 +123,10 @@ export const serviceOrders: IServiceOrder[] = [
         address: "Autopista Norte Km 19, Chía",
         equipmentName: "Chiller Principal",
         equipmentHealth: "Preventivo",
-        status: "Pendiente",
+        status: "Completado",
         technicianId: "tech-1",
-        technicianName: "Carlos Mappale"
+        technicianName: "Carlos Mappale",
+        value: 800,
     },
     {
         id: "os-4",
@@ -131,10 +135,47 @@ export const serviceOrders: IServiceOrder[] = [
         address: "Av. Siempre Viva 123, Bogotá",
         equipmentName: "Unidad A/C Central 1",
         equipmentHealth: "OK",
-        status: "Pendiente",
+        status: "Completado",
         technicianId: "tech-2",
-        technicianName: "Luis Fernandez"
+        technicianName: "Luis Fernandez",
+        value: 150,
     },
+     {
+        id: "os-5",
+        time: "Ayer",
+        clientName: "Torres Corporativas Capital",
+        address: "Cra 7 # 71-21, Bogotá",
+        equipmentName: "Sistema de Ventilación Torre A",
+        equipmentHealth: "OK",
+        status: "Completado",
+        technicianId: "tech-2",
+        technicianName: "Luis Fernandez",
+        value: 200,
+    },
+    {
+        id: "os-6",
+        time: "Ayer",
+        clientName: "Grand Hotel Plaza",
+        address: "Av. Siempre Viva 123, Bogotá",
+        equipmentName: "Unidad A/C Central 1",
+        equipmentHealth: "Preventivo",
+        status: "Completado",
+        technicianId: "tech-3",
+        technicianName: "Ana Torres",
+        value: 220,
+    },
+    {
+        id: "os-7",
+        time: "Ayer",
+        clientName: "Centro Comercial Oasis",
+        address: "Autopista Norte Km 19, Chía",
+        equipmentName: "Chiller Principal",
+        equipmentHealth: "OK",
+        status: "Completado",
+        technicianId: "tech-3",
+        technicianName: "Ana Torres",
+        value: 180,
+    }
 ];
 
 export type InventoryItemType = 'generic' | 'serialized';
@@ -153,8 +194,8 @@ export const inventory: IInventoryItem[] = [
     { id: "inv-1", name: "Filtro de Aire 20x20", type: 'generic', stock: 50, criticalStockLevel: 10, location: "Bodega Principal" },
     { id: "inv-2", name: "Compresor Rotativo 5 Ton", type: 'serialized', stock: 5, criticalStockLevel: 2, serials: ["COMP-001", "COMP-002", "COMP-003", "COMP-004", "COMP-005"], location: "Bodega Principal" },
     { id: "inv-3", name: "Refrigerante R410A (Cilindro)", type: 'generic', stock: 3, criticalStockLevel: 5, location: "Bodega Principal" },
-    { id: "inv-4", name: "Termostato Digital Programable", type: 'generic', stock: 25, criticalStockLevel: 10, location: "Técnico Carlos" },
-    { id: "inv-5", name: "Tarjeta Controladora Universal", type: 'serialized', stock: 1, criticalStockLevel: 2, serials: ["CTRL-A-1001"], location: "Técnico Luis" },
+    { id: "inv-4", name: "Termostato Digital Programable", type: 'generic', stock: 25, criticalStockLevel: 10, location: "Carlos Mappale" },
+    { id: "inv-5", name: "Tarjeta Controladora Universal", type: 'serialized', stock: 1, criticalStockLevel: 2, serials: ["CTRL-A-1001"], location: "Luis Fernandez" },
 ];
 
 export interface KpiCardProps {
@@ -171,8 +212,8 @@ export const kpiData: KpiCardProps[] = [
         title: "OS Hoy",
         metric: "12",
         icon: "ClipboardList",
-        color: "default",
-        description: "Órdenes de servicio creadas hoy.",
+        color: "cyan",
+        description: "Órdenes de servicio para hoy.",
     },
     {
         title: "Equipos Críticos",
@@ -193,7 +234,7 @@ export const kpiData: KpiCardProps[] = [
         metric: "85%",
         icon: "CheckCircle2",
         color: "cyan",
-        description: "En las últimas 24h.",
+        description: "+5% vs la semana pasada",
         compliance: 85,
     }
 ];
