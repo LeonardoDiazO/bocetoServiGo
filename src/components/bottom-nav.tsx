@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ClipboardList, QrCode, Boxes } from "lucide-react"
+import { ClipboardList, QrCode, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/tech/mis-ordenes", label: "Mis Órdenes", icon: ClipboardList },
   { href: "/tech/escanear", label: "Escanear QR", icon: QrCode },
-  { href: "/tech/mi-bodega", label: "Mi Bodega", icon: Boxes },
+  { href: "/tech/perfil", label: "Perfil", icon: User },
 ]
 
 export function BottomNav() {
@@ -18,7 +18,7 @@ export function BottomNav() {
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-card border-t border-border">
       <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
         {navItems.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href
+          const isActive = pathname.startsWith(href)
           return (
             <Link
               key={label}
