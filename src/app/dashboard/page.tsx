@@ -49,7 +49,7 @@ export default function DashboardPage() {
       if (!user) {
         router.replace("/login")
       } else if (user.role === "TECH") {
-        router.replace("/mis-ordenes")
+        router.replace("/tech/mis-ordenes")
       }
     }
   }, [user, loading, router])
