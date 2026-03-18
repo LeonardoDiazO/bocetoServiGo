@@ -13,6 +13,7 @@ import { KpiCard } from "@/components/kpi-card"
 import AiInsightsCard from "@/components/ai-insights-card"
 import { DepartmentPerformanceChart } from "@/components/department-performance-chart"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { OrderServiceForm } from "@/components/order-service-form"
 
 export type Module = 'Dashboard' | 'Clientes' | 'Equipos' | 'Ordenes' | 'Inventario';
 
@@ -75,7 +76,7 @@ export default function Home() {
               <PlaceholderContent module="Clientes" />
             )}
             {currentModule === "Equipos" && <PlaceholderContent module="Equipos" />}
-            {currentModule === "Ordenes" && <PlaceholderContent module="Órdenes" />}
+            {currentModule === "Ordenes" && <OrderServiceForm />}
             {currentModule === "Inventario" && (
               <PlaceholderContent module="Inventario" />
             )}
