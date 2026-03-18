@@ -10,7 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { equipment, clients, type IEquipment } from "@/lib/data"
+import { equipment, clients, type IEquipment, EquipmentStatus } from "@/lib/data"
 import { Building, Search, Tag } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -29,18 +29,22 @@ const enrichedEquipment: EnrichedEquipment[] = equipment.map((eq) => {
 
 export function EquipmentListComponent() {
   const [searchTerm, setSearchTerm] = React.useState("")
+  const [statusFilter, setStatusFilter] =
+    React.useState<EquipmentStatus | "all">("all")
 
   const filteredEquipment = React.useMemo(() => {
-    if (!searchTerm) {
-      return enrichedEquipment
-    }
-    return enrichedEquipment.filter(
-      (eq) =>
+    return enrichedEquipment.filter((eq) => {
+      const matchesSearch =
+        !searchTerm ||
         eq.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         eq.clientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         eq.location.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  }, [searchTerm])
+
+      const matchesStatus = statusFilter === "all" || eq.status === statusFilter
+
+      return matchesSearch && matchesStatus
+    })
+  }, [searchTerm, statusFilter])
 
   const getStatusBorderClass = (status: "ok" | "critico") => {
     if (status === "critico") {
@@ -52,15 +56,48 @@ export function EquipmentListComponent() {
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       <Card className="card-sg p-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Buscar por equipo, cliente o sede..."
-            className="w-full pl-10 bg-background"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="flex flex-col gap-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Buscar por equipo, cliente o sede..."
+              className="w-full pl-10 bg-background"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              variant={statusFilter === "all" ? "secondary" : "outline"}
+              onClick={() => setStatusFilter("all")}
+            >
+              Todos
+            </Button>
+            <Button
+              size="sm"
+              variant={statusFilter === "critico" ? "default" : "outline"}
+              className={cn(
+                statusFilter === "critico" &&
+                  "bg-accent hover:bg-accent/90 text-accent-foreground"
+              )}
+              onClick={() => setStatusFilter("critico")}
+            >
+              Críticos
+            </Button>
+            <Button
+              size="sm"
+              variant={statusFilter === "ok" ? "default" : "outline"}
+              className={cn(
+                statusFilter === "ok" &&
+                  "bg-success hover:bg-success/90 text-success-foreground"
+              )}
+              onClick={() => setStatusFilter("ok")}
+            >
+              OK
+            </Button>
+          </div>
         </div>
       </Card>
 
@@ -80,14 +117,11 @@ export function EquipmentListComponent() {
                     {eq.name}
                   </CardTitle>
                   <Badge
-                    className={cn(
-                      "capitalize shrink-0 border-transparent",
-                      {
-                        "bg-accent text-accent-foreground":
-                          eq.status === "critico",
-                        "bg-success text-success-foreground": eq.status === "ok",
-                      }
-                    )}
+                    className={cn("capitalize shrink-0 border-transparent", {
+                      "bg-accent text-accent-foreground":
+                        eq.status === "critico",
+                      "bg-success text-success-foreground": eq.status === "ok",
+                    })}
                   >
                     {eq.status}
                   </Badge>
