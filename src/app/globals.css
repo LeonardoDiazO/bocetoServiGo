@@ -23,6 +23,8 @@
     --destructive-foreground: 0 0% 98%;
     --success: 145 58% 55%; /* Soft Green */
     --success-foreground: 145 90% 15%;
+    --warning: 45 93% 47%; /* Amber */
+    --warning-foreground: 45 93% 17%;
     --border: 220 13% 91%; /* #E2E8F0 */
     --input: 220 13% 88%;
     --ring: 224 82% 57%;
@@ -69,6 +71,8 @@
     --destructive-foreground: 0 0% 98%;
     --success: 145 58% 45%;
     --success-foreground: 145 58% 95%;
+    --warning: 45 93% 57%;
+    --warning-foreground: 45 93% 10%;
     --border: 210 10% 25%;
     --input: 210 10% 25%;
     --ring: 224 82% 70%;

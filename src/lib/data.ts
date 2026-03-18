@@ -51,6 +51,7 @@ export const clients: IClient[] = [
 ];
 
 export type EquipmentStatus = "ok" | "critico";
+export type EquipmentHealth = "Crítico" | "Preventivo" | "OK";
 
 export interface IEquipment {
     id: string;
@@ -69,9 +70,71 @@ export const equipment: IEquipment[] = [
 ];
 
 export const technicians = [
-    { id: "tech-1", name: "Carlos Mendoza" },
+    { id: "tech-admin", name: "Mario Rossi" },
+    { id: "tech-1", name: "Carlos Mappale" },
     { id: "tech-2", name: "Luis Fernandez" },
     { id: "tech-3", name: "Ana Torres" },
+];
+
+export type ServiceOrderStatus = "Pendiente" | "En Proceso" | "Completado";
+
+export interface IServiceOrder {
+    id: string;
+    time: string;
+    clientName: string;
+    address: string;
+    equipmentName: string;
+    equipmentHealth: EquipmentHealth;
+    status: ServiceOrderStatus;
+    technicianId: string;
+    technicianName: string;
+}
+
+export const serviceOrders: IServiceOrder[] = [
+    {
+        id: "os-1",
+        time: "09:00 AM",
+        clientName: "Grand Hotel Plaza",
+        address: "Av. Siempre Viva 123, Bogotá",
+        equipmentName: "Unidad A/C Central 2",
+        equipmentHealth: "Crítico",
+        status: "Pendiente",
+        technicianId: "tech-1",
+        technicianName: "Carlos Mappale"
+    },
+    {
+        id: "os-2",
+        time: "11:30 AM",
+        clientName: "Torres Corporativas Capital",
+        address: "Cra 7 # 71-21, Bogotá",
+        equipmentName: "Bomba de Agua Torre B",
+        equipmentHealth: "OK",
+        status: "Pendiente",
+        technicianId: "tech-1",
+        technicianName: "Carlos Mappale"
+    },
+    {
+        id: "os-3",
+        time: "02:00 PM",
+        clientName: "Centro Comercial Oasis",
+        address: "Autopista Norte Km 19, Chía",
+        equipmentName: "Chiller Principal",
+        equipmentHealth: "Preventivo",
+        status: "Pendiente",
+        technicianId: "tech-1",
+        technicianName: "Carlos Mappale"
+    },
+    {
+        id: "os-4",
+        time: "10:00 AM",
+        clientName: "Grand Hotel Plaza",
+        address: "Av. Siempre Viva 123, Bogotá",
+        equipmentName: "Unidad A/C Central 1",
+        equipmentHealth: "OK",
+        status: "Pendiente",
+        technicianId: "tech-2",
+        technicianName: "Luis Fernandez"
+    },
 ];
 
 export type InventoryItemType = 'generic' | 'serialized';
